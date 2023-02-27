@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\InvoiceManagmentSystem.WebAPI.props" />
+</Project>

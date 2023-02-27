@@ -1,0 +1,17 @@
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\bin\Debug\net6.0\InvoiceManagmentSystem.Entity.deps.json
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\bin\Debug\net6.0\InvoiceManagmentSystem.Entity.runtimeconfig.json
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\bin\Debug\net6.0\InvoiceManagmentSystem.Entity.dll
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\bin\Debug\net6.0\InvoiceManagmentSystem.Entity.pdb
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\bin\Debug\net6.0\InvoiceManagmentSystem.Core.dll
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\bin\Debug\net6.0\InvoiceManagmentSystem.Core.pdb
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.csproj.AssemblyReference.cache
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.AssemblyInfoInputs.cache
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.AssemblyInfo.cs
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.csproj.CoreCompileInputs.cache
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.csproj.CopyComplete
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.dll
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\refint\InvoiceManagmentSystem.Entity.dll
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.pdb
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\InvoiceManagmentSystem.Entity.genruntimeconfig.cache
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Entity\obj\Debug\net6.0\ref\InvoiceManagmentSystem.Entity.dll

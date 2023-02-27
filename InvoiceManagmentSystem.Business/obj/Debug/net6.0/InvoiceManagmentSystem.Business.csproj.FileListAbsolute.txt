@@ -1,0 +1,12 @@
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\bin\Debug\net6.0\InvoiceManagmentSystem.Business.deps.json
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\bin\Debug\net6.0\InvoiceManagmentSystem.Business.dll
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\bin\Debug\net6.0\InvoiceManagmentSystem.Business.pdb
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\InvoiceManagmentSystem.Business.csproj.AssemblyReference.cache
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\InvoiceManagmentSystem.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\InvoiceManagmentSystem.Business.AssemblyInfoInputs.cache
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\InvoiceManagmentSystem.Business.AssemblyInfo.cs
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\InvoiceManagmentSystem.Business.csproj.CoreCompileInputs.cache
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\InvoiceManagmentSystem.Business.dll
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\refint\InvoiceManagmentSystem.Business.dll
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\InvoiceManagmentSystem.Business.pdb
+C:\Users\burak.ipekci\source\repos\PatikaDev_InvoiceManagmentSystem\InvoiceManagmentSystem.Business\obj\Debug\net6.0\ref\InvoiceManagmentSystem.Business.dll
