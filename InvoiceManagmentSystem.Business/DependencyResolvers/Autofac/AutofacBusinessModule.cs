@@ -7,6 +7,7 @@ using InvoiceManagmentSystem.Core.Utilities.Interceptor;
 using InvoiceManagmentSystem.Core.Utilities.Security.JWT;
 using InvoiceManagmentSystem.DataAccess.Abstract;
 using InvoiceManagmentSystem.DataAccess.Concrete.EntityFramework;
+using InvoiceManagmentSystem.DataAccess.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,15 @@ namespace InvoiceManagmentSystem.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
-
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+            
+            
+            
+            
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+
+            builder.RegisterType<InvoiceManagementSystemDbContext>();
 
 
 

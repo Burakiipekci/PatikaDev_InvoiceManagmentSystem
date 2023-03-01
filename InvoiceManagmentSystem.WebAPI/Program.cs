@@ -49,9 +49,11 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
     });
 #endregion
 
+#region Core Module
 builder.Services.AddDependencyResolvers(new CoreModule());
+#endregion
 
-builder.Services.AddDbContext<InvoiceManagementSystemDbContext>();
+#region Mapper
 var mapperConfig = new MapperConfiguration(mc =>
 {
     mc.AddProfile(new MappingProfile());
@@ -59,6 +61,7 @@ var mapperConfig = new MapperConfiguration(mc =>
 
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
+#endregion
 
 var app = builder.Build();
 

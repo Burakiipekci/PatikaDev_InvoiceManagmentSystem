@@ -60,9 +60,6 @@ namespace InvoiceManagmentSystem.Core.DataAccess.EntityFramework
             }
 
         }
-
-      
-
         public void update(TEntity Entity)
         {
             using (TContext context = new TContext())
