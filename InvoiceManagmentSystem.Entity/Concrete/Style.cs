@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagmentSystem.Entity.Concrete
 {
-    public class Style:BaseEntity
+    public class Style:IBaseEntity
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

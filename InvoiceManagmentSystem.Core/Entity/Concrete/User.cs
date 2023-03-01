@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagmentSystem.Core.Entity.Concrete
 {
-    public class User:BaseEntity
+    public class User:IBaseEntity
     {
+        public int Id { get; set; }
         public int RoleId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

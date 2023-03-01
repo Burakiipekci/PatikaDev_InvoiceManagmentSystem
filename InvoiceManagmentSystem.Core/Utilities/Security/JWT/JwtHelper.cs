@@ -16,47 +16,58 @@ namespace InvoiceManagmentSystem.Core.Utilities.Security.JWT
 {
     public class JwtHelper : ITokenHelper
     {
-        public IConfiguration Configuration { get; }
-        private TokenOptions _tokenOptions;
-        private DateTime _accessTokenExpiration;
+        public IConfiguration Configuration { get; } // Apideki Appsettingsi okumaya yarayacak.
+        private TokenOptions _tokenOptions; //Appsettings değerleri bir nesneye atmaya yarayacak.
+        private DateTime _accessTokenExpiration; //AccessToken ne zaman geçersizleşicek süre koymaya yarayacak.
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            //Appsettingsdeki ayarları bul , al ve TokenOptions sınıfına ata.
+
         }
-        public AccessToken CreateToken(User user, Role role)
+        public AccessToken CreateToken(User user, List<OperationClaim> operationClaims) //Kullanıcı için Token üreticez.
         {
-            _accessTokenExpiration = DateTime.Now.AddDays(_tokenOptions.AccessTokenExpiration);
-            SecurityKey securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
-            SigningCredentials signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
-            JwtSecurityToken jwt = CreateJwtSecurityToken(user, role, signingCredentials, _tokenOptions, _accessTokenExpiration);
-            JwtSecurityTokenHandler jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-            string token = jwtSecurityTokenHandler.WriteToken(jwt);
+            _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);//Tokenın süresinin ne zaman biteceğini alıyoruz (Appsettingsden).
+            var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);//Kullanacağımız anahtarı alıyoruz.
+            var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);//Hangi anahtarı algoritmayı kullanacağını söylüyoruz.
+            var jwt = CreateJwtSecurityToken(_tokenOptions, user, signingCredentials, operationClaims);//İlgili kullanıcıya atanacak yetenekleri veriyoruz.
+            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            var token = jwtSecurityTokenHandler.WriteToken(jwt);
+
             return new AccessToken
             {
                 Token = token,
                 Expiration = _accessTokenExpiration
             };
+
         }
 
-        private JwtSecurityToken CreateJwtSecurityToken(User user, Role role, SigningCredentials signingCredentials, TokenOptions tokenOptions, DateTime accessTokenExpiration)
+        public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
+            SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
         {
-            return new JwtSecurityToken(
-                issuer: _tokenOptions.Issuer,
-                audience: _tokenOptions.Audience,
+            //Bilgileri oluşturuyoruz (appsetting)
+
+            var jwt = new JwtSecurityToken(
+                issuer: tokenOptions.Issuer,
+                audience: tokenOptions.Audience,
+                expires: _accessTokenExpiration,
                 notBefore: DateTime.Now,
-                signingCredentials: signingCredentials,
-                claims: SetClaims(user, role),
-                expires: _accessTokenExpiration);
+                claims: SetClaims(user, operationClaims),
+                signingCredentials: signingCredentials
+            );
+            return jwt;
         }
 
-        private IEnumerable<Claim> SetClaims(User user, Role role)
+        private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
-            List<Claim> claims = new List<Claim>();
-            claims.AddName(user.Email);
+
+            var claims = new List<Claim>();
             claims.AddNameIdentifier(user.Id.ToString());
+            claims.AddEmail(user.Email);
             claims.AddName($"{user.FirstName} {user.LastName}");
-            claims.AddRoles(new string[] {role.RoleName});
+            claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());//Roller ekliyoruz.
+
             return claims;
         }
     }

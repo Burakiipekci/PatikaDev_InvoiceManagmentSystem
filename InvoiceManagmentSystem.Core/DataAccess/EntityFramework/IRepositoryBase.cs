@@ -3,18 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InvoiceManagmentSystem.Core.DataAccess.EntityFramework
 {
-    public interface IRepositoryBase<T> where T : BaseEntity, new()
+    public interface IRepositoryBase<T> where T : class, IBaseEntity, new()
     {
-        public T? Get(Expression<Func<T, bool>> filter);
-        public List<T> GetList(Expression<Func<T, bool>>? filter = null);
-        public void Add(T entity);
-        public void Update(T entity);
-        public void Delete(T entity);
-        public void SaveChanges();
+        void Add(T Entity);
+        void delete(T Entity);
+        void DeleteById(int id);
+        void update(T Entity);
+        T Get(Expression<Func<T, bool>> filter = null);
+        List<T> GetAll(Expression<Func<T, bool>> filter = null);
     }
 }

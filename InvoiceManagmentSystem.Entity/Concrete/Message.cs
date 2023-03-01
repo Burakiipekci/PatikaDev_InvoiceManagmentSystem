@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagmentSystem.Entity.Concrete
 {
-    public class Message:BaseEntity
+    public class Message:IBaseEntity
     {
+        public int Id { get; set; }
         public int CustomerID { get; set; }
         [ForeignKey("CustomerID")]
         public User Customer { get; set; }

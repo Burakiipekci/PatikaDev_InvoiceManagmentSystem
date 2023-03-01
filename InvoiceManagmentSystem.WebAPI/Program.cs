@@ -5,6 +5,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
+using Autofac;
+using InvoiceManagmentSystem.Business.DependencyResolvers.Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Core.DependencyResolvers;
+using InvoiceManagmentSystem.Core.Extensions;
+using Autofac.Core;
+using AutoMapper;
+using InvoiceManagmentSystem.Core.Utilities.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,10 +41,24 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 #endregion
 
+#region Business Module
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    .ConfigureContainer<ContainerBuilder>(builder =>
+    {
+        builder.RegisterModule(new AutofacBusinessModule());
+    });
+#endregion
+
+builder.Services.AddDependencyResolvers(new CoreModule());
 
 builder.Services.AddDbContext<InvoiceManagementSystemDbContext>();
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MappingProfile());
+});
 
-
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
 

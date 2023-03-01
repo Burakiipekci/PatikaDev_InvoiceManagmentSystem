@@ -4,6 +4,6 @@ namespace InvoiceManagmentSystem.Core.Utilities.Security.JWT
 {
     public interface ITokenHelper
     {
-        AccessToken CreateToken(User user, Role role);
+        AccessToken CreateToken(User user, List<OperationClaim> operationClaims);
     }
 }

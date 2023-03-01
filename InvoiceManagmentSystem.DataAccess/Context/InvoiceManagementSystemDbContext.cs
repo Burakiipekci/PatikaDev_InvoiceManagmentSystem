@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace InvoiceManagmentSystem.DataAccess.Context
 {
-    public class InvoiceManagementSystemDbContext: DbContext
+    public class InvoiceManagementSystemDbContext : DbContext
     {
 
 
@@ -16,30 +16,39 @@ namespace InvoiceManagmentSystem.DataAccess.Context
             optionsBuilder.UseNpgsql(getConnectionString("PostgreSql"));
         }
         public DbSet<Apartment> Apartments { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public DbSet<Block> Blocks { get; set; }
         public DbSet<Card> Cards { get; set; }
         public DbSet<Debt> Debts { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Style> Styles { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Role[] roleEntitySeeds = {
-                new() {Id=1,RoleName="Admin"},
-                new() {Id=2,RoleName="Customer"},
-            };
 
-            modelBuilder.Entity<Role>().HasData(roleEntitySeeds);
+           
+            OperationClaim[] operationClaimsEntitySeed = {
+                new() {Id=1,Name="Admin"},
+                new() {Id=2,Name="Customer"},
+            
+            };
+            modelBuilder.Entity<OperationClaim>().HasData(operationClaimsEntitySeed);
+
+            UserOperationClaim[] userOperationClaims =
+            {
+                new(){ Id=1,OperationClaimId=1,UserId=3}
+            };
+            modelBuilder.Entity<UserOperationClaim>().HasData(userOperationClaims);
 
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash("12345", out passwordHash, out passwordSalt);
             User[] userEntitySeeds = {
                 new() {Id=1,RoleId=1,
                     FirstName="Berk",LastName="Gultekin",
-                    Email="asdfasd1@hotmail.com",
+                    Email="berk@hotmail.com",
                     PasswordHash=passwordHash,
                     PasswordSalt=passwordSalt,
                     TC="11111111111",
@@ -47,7 +56,7 @@ namespace InvoiceManagmentSystem.DataAccess.Context
                     PhoneNumber="5320000000"},
                 new() {Id=2,RoleId=2,
                     FirstName="Can",LastName="demir",
-                    Email="asdfasd2@hotmail.com",
+                    Email="can@hotmail.com",
                     PasswordHash=passwordHash,
                     PasswordSalt=passwordSalt,
                     TC="11111111112",
@@ -56,7 +65,7 @@ namespace InvoiceManagmentSystem.DataAccess.Context
                 new() {Id=3,RoleId=2,
                     FirstName="Burak",
                     LastName="ipekçi",
-                    Email="asdfasd3@hotmail.com",
+                    Email="burak@hotmail.com",
                     PasswordHash=passwordHash,
                     PasswordSalt=passwordSalt,
                     TC="11111111113",
@@ -99,7 +108,7 @@ namespace InvoiceManagmentSystem.DataAccess.Context
 
             modelBuilder.Entity<Style>().HasData(styleEntitySeeds);
         }
-      
+
 
 
 

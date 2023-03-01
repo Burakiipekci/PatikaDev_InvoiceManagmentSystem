@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagmentSystem.Entity.Concrete
 {
-    public class Apartment:BaseEntity
+    public class Apartment:IBaseEntity
     {
         [NotMapped]
         public string Name
@@ -20,7 +20,7 @@ namespace InvoiceManagmentSystem.Entity.Concrete
             }
         }
 
-        
+        public int Id { get; set; }
         public int BlockID { get; set; }
      
         public Block Block { get; set; }
@@ -32,5 +32,6 @@ namespace InvoiceManagmentSystem.Entity.Concrete
         public int CustomerID { get; set; }
        
         public User Customer { get; set; }
+       
     }
 }

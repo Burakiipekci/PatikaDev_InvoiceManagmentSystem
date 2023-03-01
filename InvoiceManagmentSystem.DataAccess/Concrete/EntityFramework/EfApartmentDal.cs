@@ -12,13 +12,6 @@ using System.Threading.Tasks;
 namespace InvoiceManagmentSystem.DataAccess.Concrete.EntityFramework
 {
     public class EfApartmentDal : RepositoryBase<Apartment, InvoiceManagementSystemDbContext>, IApartmentDal
-    {
-        private readonly InvoiceManagementSystemDbContext _context;
-        public EfApartmentDal(InvoiceManagementSystemDbContext context) : base(context)
-        {
-            _context = context;
-        }
-
-       
+    {    
     }
 }

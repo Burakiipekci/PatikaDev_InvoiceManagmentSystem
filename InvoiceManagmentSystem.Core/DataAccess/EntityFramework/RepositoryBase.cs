@@ -4,55 +4,75 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InvoiceManagmentSystem.Core.DataAccess.EntityFramework
 {
-    public class RepositoryBase<TEntity,TContext> : IRepositoryBase<TEntity>
-    where TEntity : BaseEntity, new()
-          where TContext : DbContext, new()
+    public class RepositoryBase<TEntity, TContext> : IRepositoryBase<TEntity>
+        where TEntity : class, IBaseEntity, new()
+        where TContext : DbContext, new()
     {
-        protected TContext _context { get; }
-        public RepositoryBase(TContext context)
+        public void Add(TEntity Entity)
         {
-            _context= context;
+            using (TContext context = new TContext())
+            {
+                var addedEntity = context.Entry(Entity);
+                addedEntity.State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
-    
-       
-        public void Add(TEntity entity)
+        public void delete(TEntity Entity)
         {
-          var addedEntity= _context.Entry(entity);
-            addedEntity.State= EntityState.Added;
-        }
-
-        public void Delete(TEntity entity)
-        {
-            var deletedEntity = _context.Entry(entity);
-            deletedEntity.State = EntityState.Deleted;
-        }
-
-        public TEntity? Get(Expression<Func<TEntity, bool>> filter)
-        {
-            return _context.Set<TEntity>().FirstOrDefault(filter);
+            using (TContext context = new TContext())
+            {
+                var deletedEntity = context.Entry(Entity);
+                deletedEntity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
-        public List<TEntity> GetList(Expression<Func<TEntity, bool>>? filter = null)
+        public void DeleteById(int id)
         {
-            return filter == null
-                                     ? _context.Set<TEntity>().ToList()
-                                     : _context.Set<TEntity>().Where(filter).ToList();
+            using (TContext context = new TContext())
+            {
+                var entity = context.Set<TEntity>().Find(id);
+                context.Remove(entity);
+                context.SaveChanges();
+            }
         }
 
-        public void Update(TEntity entity)
+        public TEntity Get(Expression<Func<TEntity, bool>> filter = null)
         {
-            var updatedEntity = _context.Entry(entity);
-            updatedEntity.State = EntityState.Modified;
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().SingleOrDefault(filter);
+            }
         }
-        public void SaveChanges()
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-          _context.SaveChanges();
+            using (TContext context = new TContext())
+            {
+                return filter == null
+                    ? context.Set<TEntity>().ToList()
+                    : context.Set<TEntity>().Where(filter).ToList();
+            }
+
         }
 
+      
+
+        public void update(TEntity Entity)
+        {
+            using (TContext context = new TContext())
+            {
+                var updatedEntity = context.Entry(Entity);
+                updatedEntity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
+
+
+        }
     }
 }

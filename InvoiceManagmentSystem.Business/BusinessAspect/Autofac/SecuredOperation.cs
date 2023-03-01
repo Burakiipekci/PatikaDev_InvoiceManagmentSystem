@@ -1,0 +1,41 @@
+﻿using Castle.DynamicProxy;
+using InvoiceManagmentSystem.Core.Extensions;
+using InvoiceManagmentSystem.Core.Utilities.Interceptor;
+using InvoiceManagmentSystem.Core.Utilities.IoC;
+using InvoiceManagmentSystem.Entity.Concrete;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InvoiceManagmentSystem.Business.BusinessAspect.Autofac
+{
+    public class SecuredOperation : MethodInterception
+    {
+        private string[] _roles;
+        private IHttpContextAccessor _httpContextAccessor;
+
+        public SecuredOperation(string roles)
+        {
+            _roles = roles.Split(',');
+            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+
+        }
+
+        protected override void OnBefore(IInvocation invocation)
+        {
+            var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
+            foreach (var role in _roles)
+            {
+                if (roleClaims.Contains(role))
+                {
+                    return;
+                }
+            }
+            throw new Exception("Authorization Denied");
+        }
+    }
+}

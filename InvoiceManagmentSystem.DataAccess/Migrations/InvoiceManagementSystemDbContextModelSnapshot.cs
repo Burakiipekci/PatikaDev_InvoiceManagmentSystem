@@ -22,7 +22,7 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("InvoiceManagmentSystem.Core.Entity.Concrete.Role", b =>
+            modelBuilder.Entity("InvoiceManagmentSystem.Core.Entity.Concrete.OperationClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,33 +30,24 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("RoleName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("OperationClaims");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            RoleName = "Admin"
+                            Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            RoleName = "Customer"
+                            Name = "Customer"
                         });
                 });
 
@@ -67,12 +58,6 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -109,22 +94,19 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Email = "asdfasd1@hotmail.com",
+                            Email = "berk@hotmail.com",
                             FirstName = "Berk",
                             LastName = "Gultekin",
-                            PasswordHash = new byte[] { 171, 47, 28, 107, 187, 192, 102, 211, 200, 135, 134, 143, 26, 72, 245, 89, 164, 90, 17, 240, 140, 127, 137, 250, 245, 18, 43, 136, 46, 168, 57, 64, 99, 190, 170, 94, 137, 50, 188, 54, 251, 71, 81, 237, 185, 109, 224, 93, 24, 71, 114, 248, 69, 249, 153, 240, 31, 132, 151, 222, 3, 140, 203, 33 },
-                            PasswordSalt = new byte[] { 56, 228, 224, 130, 96, 177, 151, 170, 164, 244, 192, 58, 32, 118, 6, 238, 16, 93, 2, 93, 105, 132, 20, 128, 178, 137, 16, 169, 109, 175, 26, 36, 245, 209, 155, 163, 234, 46, 185, 183, 114, 214, 12, 141, 250, 215, 139, 123, 84, 225, 112, 233, 210, 174, 117, 190, 97, 53, 79, 98, 45, 234, 5, 161, 9, 240, 88, 118, 235, 6, 207, 208, 121, 223, 130, 253, 109, 172, 130, 215, 171, 147, 173, 30, 154, 156, 80, 71, 15, 170, 67, 22, 194, 114, 237, 98, 166, 137, 173, 20, 193, 249, 107, 48, 227, 131, 61, 169, 112, 160, 77, 41, 83, 13, 92, 187, 64, 170, 224, 205, 115, 94, 20, 158, 64, 211, 106, 192 },
+                            PasswordHash = new byte[] { 245, 66, 121, 118, 32, 162, 52, 176, 57, 197, 40, 75, 225, 96, 145, 189, 64, 104, 122, 195, 14, 41, 251, 207, 42, 65, 62, 66, 210, 188, 55, 218, 126, 111, 252, 3, 2, 210, 174, 140, 36, 124, 220, 0, 220, 188, 252, 13, 114, 101, 34, 158, 91, 162, 239, 109, 156, 69, 34, 129, 156, 133, 187, 236 },
+                            PasswordSalt = new byte[] { 144, 34, 171, 132, 239, 140, 174, 204, 61, 167, 69, 240, 40, 10, 100, 3, 28, 113, 225, 119, 60, 44, 169, 254, 193, 138, 39, 128, 125, 112, 39, 6, 68, 129, 102, 251, 112, 64, 179, 104, 8, 21, 118, 213, 76, 80, 110, 12, 17, 232, 226, 169, 114, 197, 211, 240, 125, 217, 67, 94, 2, 202, 119, 92, 172, 119, 134, 236, 32, 234, 167, 79, 97, 1, 216, 31, 148, 209, 21, 195, 160, 105, 131, 145, 149, 225, 35, 136, 49, 143, 53, 183, 162, 170, 232, 100, 184, 85, 169, 149, 34, 123, 22, 136, 36, 115, 249, 126, 109, 197, 139, 24, 65, 33, 14, 9, 101, 177, 228, 1, 191, 17, 199, 187, 214, 206, 139, 25 },
                             PhoneNumber = "5320000000",
                             Plate = "49 AC 49",
                             RoleId = 1,
@@ -133,11 +115,11 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            Email = "asdfasd2@hotmail.com",
+                            Email = "can@hotmail.com",
                             FirstName = "Can",
                             LastName = "demir",
-                            PasswordHash = new byte[] { 171, 47, 28, 107, 187, 192, 102, 211, 200, 135, 134, 143, 26, 72, 245, 89, 164, 90, 17, 240, 140, 127, 137, 250, 245, 18, 43, 136, 46, 168, 57, 64, 99, 190, 170, 94, 137, 50, 188, 54, 251, 71, 81, 237, 185, 109, 224, 93, 24, 71, 114, 248, 69, 249, 153, 240, 31, 132, 151, 222, 3, 140, 203, 33 },
-                            PasswordSalt = new byte[] { 56, 228, 224, 130, 96, 177, 151, 170, 164, 244, 192, 58, 32, 118, 6, 238, 16, 93, 2, 93, 105, 132, 20, 128, 178, 137, 16, 169, 109, 175, 26, 36, 245, 209, 155, 163, 234, 46, 185, 183, 114, 214, 12, 141, 250, 215, 139, 123, 84, 225, 112, 233, 210, 174, 117, 190, 97, 53, 79, 98, 45, 234, 5, 161, 9, 240, 88, 118, 235, 6, 207, 208, 121, 223, 130, 253, 109, 172, 130, 215, 171, 147, 173, 30, 154, 156, 80, 71, 15, 170, 67, 22, 194, 114, 237, 98, 166, 137, 173, 20, 193, 249, 107, 48, 227, 131, 61, 169, 112, 160, 77, 41, 83, 13, 92, 187, 64, 170, 224, 205, 115, 94, 20, 158, 64, 211, 106, 192 },
+                            PasswordHash = new byte[] { 245, 66, 121, 118, 32, 162, 52, 176, 57, 197, 40, 75, 225, 96, 145, 189, 64, 104, 122, 195, 14, 41, 251, 207, 42, 65, 62, 66, 210, 188, 55, 218, 126, 111, 252, 3, 2, 210, 174, 140, 36, 124, 220, 0, 220, 188, 252, 13, 114, 101, 34, 158, 91, 162, 239, 109, 156, 69, 34, 129, 156, 133, 187, 236 },
+                            PasswordSalt = new byte[] { 144, 34, 171, 132, 239, 140, 174, 204, 61, 167, 69, 240, 40, 10, 100, 3, 28, 113, 225, 119, 60, 44, 169, 254, 193, 138, 39, 128, 125, 112, 39, 6, 68, 129, 102, 251, 112, 64, 179, 104, 8, 21, 118, 213, 76, 80, 110, 12, 17, 232, 226, 169, 114, 197, 211, 240, 125, 217, 67, 94, 2, 202, 119, 92, 172, 119, 134, 236, 32, 234, 167, 79, 97, 1, 216, 31, 148, 209, 21, 195, 160, 105, 131, 145, 149, 225, 35, 136, 49, 143, 53, 183, 162, 170, 232, 100, 184, 85, 169, 149, 34, 123, 22, 136, 36, 115, 249, 126, 109, 197, 139, 24, 65, 33, 14, 9, 101, 177, 228, 1, 191, 17, 199, 187, 214, 206, 139, 25 },
                             PhoneNumber = "5320000001",
                             Plate = "61 AC 62",
                             RoleId = 2,
@@ -146,15 +128,42 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            Email = "asdfasd3@hotmail.com",
+                            Email = "burak@hotmail.com",
                             FirstName = "Burak",
                             LastName = "ipekçi",
-                            PasswordHash = new byte[] { 171, 47, 28, 107, 187, 192, 102, 211, 200, 135, 134, 143, 26, 72, 245, 89, 164, 90, 17, 240, 140, 127, 137, 250, 245, 18, 43, 136, 46, 168, 57, 64, 99, 190, 170, 94, 137, 50, 188, 54, 251, 71, 81, 237, 185, 109, 224, 93, 24, 71, 114, 248, 69, 249, 153, 240, 31, 132, 151, 222, 3, 140, 203, 33 },
-                            PasswordSalt = new byte[] { 56, 228, 224, 130, 96, 177, 151, 170, 164, 244, 192, 58, 32, 118, 6, 238, 16, 93, 2, 93, 105, 132, 20, 128, 178, 137, 16, 169, 109, 175, 26, 36, 245, 209, 155, 163, 234, 46, 185, 183, 114, 214, 12, 141, 250, 215, 139, 123, 84, 225, 112, 233, 210, 174, 117, 190, 97, 53, 79, 98, 45, 234, 5, 161, 9, 240, 88, 118, 235, 6, 207, 208, 121, 223, 130, 253, 109, 172, 130, 215, 171, 147, 173, 30, 154, 156, 80, 71, 15, 170, 67, 22, 194, 114, 237, 98, 166, 137, 173, 20, 193, 249, 107, 48, 227, 131, 61, 169, 112, 160, 77, 41, 83, 13, 92, 187, 64, 170, 224, 205, 115, 94, 20, 158, 64, 211, 106, 192 },
+                            PasswordHash = new byte[] { 245, 66, 121, 118, 32, 162, 52, 176, 57, 197, 40, 75, 225, 96, 145, 189, 64, 104, 122, 195, 14, 41, 251, 207, 42, 65, 62, 66, 210, 188, 55, 218, 126, 111, 252, 3, 2, 210, 174, 140, 36, 124, 220, 0, 220, 188, 252, 13, 114, 101, 34, 158, 91, 162, 239, 109, 156, 69, 34, 129, 156, 133, 187, 236 },
+                            PasswordSalt = new byte[] { 144, 34, 171, 132, 239, 140, 174, 204, 61, 167, 69, 240, 40, 10, 100, 3, 28, 113, 225, 119, 60, 44, 169, 254, 193, 138, 39, 128, 125, 112, 39, 6, 68, 129, 102, 251, 112, 64, 179, 104, 8, 21, 118, 213, 76, 80, 110, 12, 17, 232, 226, 169, 114, 197, 211, 240, 125, 217, 67, 94, 2, 202, 119, 92, 172, 119, 134, 236, 32, 234, 167, 79, 97, 1, 216, 31, 148, 209, 21, 195, 160, 105, 131, 145, 149, 225, 35, 136, 49, 143, 53, 183, 162, 170, 232, 100, 184, 85, 169, 149, 34, 123, 22, 136, 36, 115, 249, 126, 109, 197, 139, 24, 65, 33, 14, 9, 101, 177, 228, 1, 191, 17, 199, 187, 214, 206, 139, 25 },
                             PhoneNumber = "5320000002",
                             Plate = "61 AC 63",
                             RoleId = 2,
                             TC = "11111111113"
+                        });
+                });
+
+            modelBuilder.Entity("InvoiceManagmentSystem.Core.Entity.Concrete.UserOperationClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OperationClaimId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserOperationClaims");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            OperationClaimId = 1,
+                            UserId = 3
                         });
                 });
 
@@ -169,14 +178,8 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                     b.Property<int>("BlockID")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("CustomerID")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Floor")
                         .HasColumnType("integer");
@@ -186,9 +189,6 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
 
                     b.Property<int>("StyleID")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -238,18 +238,9 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -290,17 +281,8 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                     b.Property<int>("CardPassword")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("CustomerID")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -349,17 +331,8 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                     b.Property<int>("Cost")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("CustomerID")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -378,17 +351,8 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("CustomerID")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("WrotenMessage")
                         .IsRequired()
@@ -418,17 +382,8 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
                     b.Property<int>("Cost")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("CustomerID")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -449,18 +404,9 @@ namespace InvoiceManagmentSystem.DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 

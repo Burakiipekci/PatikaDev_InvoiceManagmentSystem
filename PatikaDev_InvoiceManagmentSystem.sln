@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManagmentSystem.Entity", "InvoiceManagmentSystem.Entity\InvoiceManagmentSystem.Entity.csproj", "{BA330CAA-A9A0-483A-93B4-7738480AFE44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceManagmentSystem.Entity", "InvoiceManagmentSystem.Entity\InvoiceManagmentSystem.Entity.csproj", "{BA330CAA-A9A0-483A-93B4-7738480AFE44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManagmentSystem.DataAccess", "InvoiceManagmentSystem.DataAccess\InvoiceManagmentSystem.DataAccess.csproj", "{0B43CF0E-7F92-4F6E-AAE8-3C5FBFB87F90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceManagmentSystem.DataAccess", "InvoiceManagmentSystem.DataAccess\InvoiceManagmentSystem.DataAccess.csproj", "{0B43CF0E-7F92-4F6E-AAE8-3C5FBFB87F90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManagmentSystem.Core", "InvoiceManagmentSystem.Core\InvoiceManagmentSystem.Core.csproj", "{F661EFB6-E1A1-4258-B2E6-0DEE7502BF34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceManagmentSystem.Core", "InvoiceManagmentSystem.Core\InvoiceManagmentSystem.Core.csproj", "{F661EFB6-E1A1-4258-B2E6-0DEE7502BF34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManagmentSystem.Business", "InvoiceManagmentSystem.Business\InvoiceManagmentSystem.Business.csproj", "{0E6B4B3F-353D-4A29-A21F-94BB0E916FD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceManagmentSystem.Business", "InvoiceManagmentSystem.Business\InvoiceManagmentSystem.Business.csproj", "{0E6B4B3F-353D-4A29-A21F-94BB0E916FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManagmentSystem.Dto", "InvoiceManagmentSystem.Dto\InvoiceManagmentSystem.Dto.csproj", "{B95A75CE-D1CF-49F9-93EA-E632DAD94777}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManagmentSystem.WebAPI", "InvoiceManagmentSystem.WebAPI\InvoiceManagmentSystem.WebAPI.csproj", "{B86903F3-EC22-4DDA-A5A2-69D0DF72F057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceManagmentSystem.WebAPI", "InvoiceManagmentSystem.WebAPI\InvoiceManagmentSystem.WebAPI.csproj", "{B86903F3-EC22-4DDA-A5A2-69D0DF72F057}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{0E6B4B3F-353D-4A29-A21F-94BB0E916FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E6B4B3F-353D-4A29-A21F-94BB0E916FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E6B4B3F-353D-4A29-A21F-94BB0E916FD9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B95A75CE-D1CF-49F9-93EA-E632DAD94777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B95A75CE-D1CF-49F9-93EA-E632DAD94777}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B95A75CE-D1CF-49F9-93EA-E632DAD94777}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B95A75CE-D1CF-49F9-93EA-E632DAD94777}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B86903F3-EC22-4DDA-A5A2-69D0DF72F057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B86903F3-EC22-4DDA-A5A2-69D0DF72F057}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B86903F3-EC22-4DDA-A5A2-69D0DF72F057}.Release|Any CPU.ActiveCfg = Release|Any CPU
